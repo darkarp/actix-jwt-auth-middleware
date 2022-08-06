@@ -10,6 +10,8 @@ pub enum AuthError {
     NoCookie,
     /// returned if the guard function returns false
     Unauthorized,
+    Invalid,
+    Expired,
     TokenCreation(CreationError),
     TokenValidation(ValidationError),
     TokenParse(ParseError),
