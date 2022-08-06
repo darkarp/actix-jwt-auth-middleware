@@ -10,8 +10,6 @@ pub enum AuthError {
     NoCookie,
     /// returned if the guard function returns false
     Unauthorized,
-    Invalid,
-    Expired,
     TokenCreation(CreationError),
     TokenValidation(ValidationError),
     TokenParse(ParseError),
@@ -44,8 +42,7 @@ impl std::fmt::Display for AuthError {
                     "you have provided no cookie, or your cookie has the wrong name"
                 }
                 AuthError::Unauthorized => "you are not authorized to interact with this scope",
-                AuthError::Invalid => "something went wrong parsing your token",
-                AuthError::Expired => "your token is expired",
+                _ => "something went wrong parsing your token",
                 AuthError::TokenCreation(_) => "there was an internal error creating your token",
                 AuthError::TokenValidation(_) => "it seems your token could not be verified",
                 AuthError::TokenParse(_) => "it seems there has been an error parsing your token",
